@@ -1,7 +1,7 @@
-ios-pod
+ua-ios-pod
 =======
 
-ios-pod does the following things:
+ua-ios-pod does the following things:
 
 - Provides a staging area for the UrbanAirship-iOS-SDK podspec (which lives in the Cocoapods Specs repo).
 - Provides a pod sample app PodSample with accompanying podfile.  

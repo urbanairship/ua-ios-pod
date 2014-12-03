@@ -1,6 +1,6 @@
 {
   "name": "UrbanAirship-iOS-SDK",
-  "version": "5.0.3",
+  "version": "5.1.0",
   "license": "BSD",
   "platforms": {
     "ios": "6.0"
@@ -12,15 +12,15 @@
   },
   "source": {
     "git": "https://github.com/urbanairship/ua-ios-pod.git",
-    "tag": "5.0.3"
+    "tag": "5.1.0"
   },
+  "requires_arc": true,
   "default_subspecs": ["Core"],
   "subspecs": [
     {
       "name": "Core",
       "source_files": "Airship/**/**/*.{m,h}",
       "resources": "Airship/**/**/*.{strings}",
-      "requires_arc": true,
       "vendored_libraries": [
         "Airship/**.a"
       ],

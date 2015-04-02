@@ -1,5 +1,5 @@
 /*
- Copyright 2009-2014 Urban Airship Inc. All rights reserved.
+ Copyright 2009-2015 Urban Airship Inc. All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
@@ -7,11 +7,11 @@
  1. Redistributions of source code must retain the above copyright notice, this
  list of conditions and the following disclaimer.
 
- 2. Redistributions in binaryform must reproduce the above copyright notice,
+ 2. Redistributions in binary form must reproduce the above copyright notice,
  this list of conditions and the following disclaimer in the documentation
- and/or other materials provided withthe distribution.
+ and/or other materials provided with the distribution.
 
- THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC``AS IS'' AND ANY EXPRESS OR
+ THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC ``AS IS'' AND ANY EXPRESS OR
  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
  EVENT SHALL URBAN AIRSHIP INC OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
@@ -26,6 +26,7 @@
 #import "UAPushSettingsAliasViewController.h"
 #import "UAPush.h"
 #import "NSString+UASizeWithFontCompatibility.h"
+#import "UAirship.h"
 
 enum {
     SectionDesc        = 0,
@@ -52,7 +53,7 @@ enum {
     self.title = @"Device Alias";
 
     UITextField *strongAliasField = self.aliasField;
-    strongAliasField.text = [UAPush shared].alias;
+    strongAliasField.text = [UAirship push].alias;
     strongAliasField.clearsOnBeginEditing = YES;
     strongAliasField.accessibilityLabel = @"Edit Alias";
     self.textLabel.text = @"Assign an alias to a device or a group of devices to simplify "
@@ -126,12 +127,12 @@ enum {
     NSString *result = [newAlias stringByReplacingCharactersInRange:range withString:@""];
 
     if ([result length] != 0) {
-        [[UAPush shared] setAlias:result];
-        [[UAPush shared] updateRegistration];
+        [[UAirship push] setAlias:result];
+        [[UAirship push] updateRegistration];
     } else {
         textField.text = nil;
-        [[UAPush shared] setAlias:nil];
-        [[UAPush shared] updateRegistration];
+        [[UAirship push] setAlias:nil];
+        [[UAirship push] updateRegistration];
     }
 }
 

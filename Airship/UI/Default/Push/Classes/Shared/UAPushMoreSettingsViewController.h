@@ -1,5 +1,5 @@
 /*
- Copyright 2009-2014 Urban Airship Inc. All rights reserved.
+ Copyright 2009-2015 Urban Airship Inc. All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
@@ -7,11 +7,11 @@
  1. Redistributions of source code must retain the above copyright notice, this
  list of conditions and the following disclaimer.
 
- 2. Redistributions in binaryform must reproduce the above copyright notice,
+ 2. Redistributions in binary form must reproduce the above copyright notice,
  this list of conditions and the following disclaimer in the documentation
- and/or other materials provided withthe distribution.
+ and/or other materials provided with the distribution.
 
- THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC``AS IS'' AND ANY EXPRESS OR
+ THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC ``AS IS'' AND ANY EXPRESS OR
  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
  EVENT SHALL URBAN AIRSHIP INC OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
@@ -25,14 +25,21 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <MessageUI/MessageUI.h>
+
 #import "UAPush.h"
 
-@interface UAPushMoreSettingsViewController : UIViewController
+@interface UAPushMoreSettingsViewController : UIViewController <UITableViewDelegate,
+                                                                UITableViewDataSource,
+                                                                MFMailComposeViewControllerDelegate>
+
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) UITableViewCell *deviceTokenCell;
 @property (nonatomic, strong) UITableViewCell *deviceTokenTypesCell;
 @property (nonatomic, strong) UITableViewCell *deviceTokenDisabledTypesCell;
 @property (nonatomic, strong) UITableViewCell *deviceTokenAliasCell;
+@property (nonatomic, strong) UITableViewCell *deviceTokenNamedUserCell;
 @property (nonatomic, strong) UITableViewCell *deviceTokenTagsCell;
 @property (nonatomic, strong) UITableViewCell *channelCell;
 @property (nonatomic, strong) UITableViewCell *usernameCell;
@@ -40,10 +47,10 @@
 @property (nonatomic, strong) UITableViewCell *helpLogCell;
 @property (nonatomic, strong) UIViewController *tokenViewController;
 @property (nonatomic, strong) UIViewController *aliasViewController;
+@property (nonatomic, strong) UIViewController *namedUserViewController;
 @property (nonatomic, strong) UIViewController *tagsViewController;
 @property (nonatomic, strong) UIViewController *channelInfoViewController;
 @property (nonatomic, strong) UIViewController *userInfoViewController;
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIImageView *footerImageView;
 @property (nonatomic, strong) UITableViewCell *locationCell;
 @property (nonatomic, strong) id userCreatedObserver;

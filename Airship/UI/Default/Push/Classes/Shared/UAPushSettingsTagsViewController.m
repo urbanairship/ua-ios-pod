@@ -1,5 +1,5 @@
 /*
- Copyright 2009-2014 Urban Airship Inc. All rights reserved.
+ Copyright 2009-2015 Urban Airship Inc. All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
@@ -7,11 +7,11 @@
  1. Redistributions of source code must retain the above copyright notice, this
  list of conditions and the following disclaimer.
  
- 2. Redistributions in binaryform must reproduce the above copyright notice,
+ 2. Redistributions in binary form must reproduce the above copyright notice,
  this list of conditions and the following disclaimer in the documentation
- and/or other materials provided withthe distribution.
+ and/or other materials provided with the distribution.
  
- THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC``AS IS'' AND ANY EXPRESS OR
+ THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC ``AS IS'' AND ANY EXPRESS OR
  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
  EVENT SHALL URBAN AIRSHIP INC OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
@@ -25,8 +25,10 @@
 
 #import "UAPushSettingsTagsViewController.h"
 #import "UAPushSettingsAddTagViewController.h"
-#import "UAPush.h"
 #import "NSString+UASizeWithFontCompatibility.h"
+#import "UAirship.h"
+#import "UAPush.h"
+
 
 enum {
     SectionDesc     = 0,
@@ -84,7 +86,7 @@ enum {
     // Return the number of rows in the section.
     switch (section) {
         case SectionTags:
-            return (NSInteger)[[UAPush shared].tags count];
+            return (NSInteger)[[UAirship push].tags count];
         case SectionDesc:
             return DescSectionRowCount;
         default:
@@ -116,7 +118,7 @@ enum {
             
             // Configure the cell...
             
-            cell.textLabel.text = [[UAPush shared].tags objectAtIndex:(NSUInteger)indexPath.row];
+            cell.textLabel.text = [[UAirship push].tags objectAtIndex:(NSUInteger)indexPath.row];
             cell.accessoryType = UITableViewCellAccessoryNone;
             break;
         }
@@ -151,11 +153,11 @@ enum {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        NSString *tagToDelete = [[UAPush shared].tags objectAtIndex:(NSUInteger)indexPath.row];
+        NSString *tagToDelete = [[UAirship push].tags objectAtIndex:(NSUInteger)indexPath.row];
         
         // Commit to server
-        [[UAPush shared] removeTag:tagToDelete];
-        [[UAPush shared] updateRegistration];
+        [[UAirship push] removeTag:tagToDelete];
+        [[UAirship push] updateRegistration];
         
         // Delete the row from the view
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -190,7 +192,7 @@ enum {
     if (indexPath.section == SectionDesc) {
         text = strongTextLabel.text;
     } else {
-        text = [[UAPush shared].tags objectAtIndex:(NSUInteger)indexPath.row];
+        text = [[UAirship push].tags objectAtIndex:(NSUInteger)indexPath.row];
     }
     
     CGFloat height = [text uaSizeWithFont:strongTextLabel.font
@@ -220,7 +222,7 @@ enum {
      
      [[self navigationController] dismissViewControllerAnimated:YES completion:NULL];
      
-     if ([[UAPush shared].tags containsObject:tag]) {
+     if ([[UAirship push].tags containsObject:tag]) {
          UALOG(@"Tag %@ already exists.", tag);
          return;
      }
@@ -231,17 +233,17 @@ enum {
      }
 
      // Add a tag to the end of the existing set of tags
-     NSMutableArray *tagUpdate = [NSMutableArray arrayWithArray:[[UAPush shared] tags]];
+     NSMutableArray *tagUpdate = [NSMutableArray arrayWithArray:[[UAirship push] tags]];
      [tagUpdate addObject:tag];
-     [[UAPush shared] setTags:tagUpdate];
+     [[UAirship push] setTags:tagUpdate];
 
      // Update the tableview
-     NSUInteger index = [[UAPush shared].tags count] - 1;
+     NSUInteger index = [[UAirship push].tags count] - 1;
      NSArray *indexArray = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:(NSInteger)index inSection:SectionTags]];
      [self.tableView insertRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationTop];
 
      // Update the registration
-     [[UAPush shared] updateRegistration];
+     [[UAirship push] updateRegistration];
  }
  
  - (void)cancelAddTag {

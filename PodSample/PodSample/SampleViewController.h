@@ -24,41 +24,14 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "UAInboxPushHandler.h"
+#import "UAInbox.h"
 
-@interface SampleViewController : UIViewController <UIActionSheetDelegate, UIPopoverControllerDelegate, UAInboxPushHandlerDelegate>
+@interface SampleViewController : UIViewController <UIActionSheetDelegate, UIPopoverControllerDelegate, UAInboxDelegate>
 
 @property (nonatomic, weak) IBOutlet UIButton *settingsButton;
 @property (nonatomic, weak) IBOutlet UIButton *tokenButton;
 @property (nonatomic, weak) IBOutlet UILabel *version;
 
-
 - (IBAction)buttonPressed:(id)sender;
-
-- (IBAction)mail:(id)sender;
-- (IBAction)selectInboxStyle:(id)sender;
-
-/**
- * Whether to display incoming rich push messages in
- * an overlay controller.
- *
- * Defaults to YES.
- */
-@property(nonatomic, assign) BOOL useOverlay;
-
-/**
- * Whether to use the iPhone UI on the iPad.
- *
- * Defaults to NO.
- */
-@property(nonatomic, assign) BOOL runiPhoneTargetOniPad;
-
-/**
- * The size of the popover controller's window,
- * When using the popover user interface.
- *
- * Defaults to 320 x 1100.
- */
-@property(nonatomic, assign) CGSize popoverSize;
 
 @end

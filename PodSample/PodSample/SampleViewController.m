@@ -26,34 +26,11 @@
 #import "SampleViewController.h"
 #import "UAPush.h"
 #import "UAirship.h"
-#import "UAPushLocalization.h"
 #import "UAPushSettingsViewController.h"
 #import "UAPushMoreSettingsViewController.h"
 #import "UAirship.h"
 #import "UAInbox.h"
 #import "UAInboxMessageListController.h"
-#import "UAInboxMessageViewController.h"
-#import "UALandingPageOverlayController.h"
-#import "InboxSampleUserInterface.h"
-#import "InboxSampleModalUserInterface.h"
-#import "InboxSamplePopoverUserInterface.h"
-#import "InboxSampleNavigationUserInterface.h"
-#import "UAInboxAlertHandler.h"
-#import "UAUtils.h"
-
-typedef NS_ENUM(NSInteger, InboxStyle) {
-    InboxStyleModal,
-    InboxStyleNavigation
-};
-
-@interface SampleViewController ()
-
-@property(nonatomic, assign) InboxStyle style;
-@property(nonatomic, strong) UIPopoverController *popover;
-@property(nonatomic, strong) id<InboxSampleUserInterface> userInterface;
-@property(nonatomic, strong) UAInboxAlertHandler *alertHandler;
-
-@end
 
 @implementation SampleViewController
 
@@ -79,38 +56,6 @@ typedef NS_ENUM(NSInteger, InboxStyle) {
     return vc;
 }
 
-- (IBAction)buttonPressed:(id)sender {
-    UIViewController *root;
-    if (sender == self.settingsButton) {
-        root = [self buildAPNSSettingsViewController];
-    } else if (sender == self.tokenButton) {
-        root = [self buildTokenSettingsViewController];
-    }
-
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:root];
-
-    [self presentViewController:nav animated:YES completion:nil];
-}
-
-- (void)closeSettings {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-
-#pragma Inbox
-
-- (void)awakeFromNib {
-    self.alertHandler = [[UAInboxAlertHandler alloc] init];
-}
-
-- (IBAction)mail:(id)sender {
-    [self.userInterface showInbox];
-}
-
-- (BOOL)shouldUsePopover {
-    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad && !self.runiPhoneTargetOniPad;
-}
-
 /*
  Builds a new instance of the message list controller, configuring buttons and closeBlock implementations.
  */
@@ -122,134 +67,56 @@ typedef NS_ENUM(NSInteger, InboxStyle) {
                                                                                          target:self
                                                                                          action:@selector(inboxDone:)];
 
-    //the closeBLock allows for rich push messages to close the inbox after running actions
-    mlc.closeBlock = ^(BOOL animated) {
-        [self.userInterface hideInbox];
-    };
-
     return mlc;
 }
 
-- (void)inboxDone:(id)sender {
-    [self.userInterface hideInbox];
-}
-
-/*
- Displays an incoming message, either by showing it in an overlay,
- or loading it in an already visible inbox interface.
- */
-- (void)displayMessage:(UAInboxMessage *)message {
-    if (![self.userInterface isVisible]) {
-        if (self.useOverlay) {
-            [UALandingPageOverlayController showMessage:message];
-            return;
-        } else {
-            [self.userInterface showInbox];
-        }
+- (IBAction)buttonPressed:(id)sender {
+    UIViewController *root;
+    if (sender == self.settingsButton) {
+        root = [self buildAPNSSettingsViewController];
+    } else if (sender == self.tokenButton) {
+        root = [self buildTokenSettingsViewController];
     }
 
-    [self.userInterface.messageListController displayMessage:message];
+    [self presentController:root];
 }
 
-- (void)setStyle:(enum InboxStyle)style {
-    UAInboxMessageListController *mlc = [self buildMessageListController];
-    switch (style) {
-        case InboxStyleModal:
-            self.userInterface = [[InboxSampleModalUserInterface alloc] initWithMessageListController:mlc];
-            break;
-        case InboxStyleNavigation:
-            if ([self shouldUsePopover]) {
-                self.userInterface = [[InboxSamplePopoverUserInterface alloc] initWithMessageListController:mlc
-                                                                                                popoverSize:self.popoverSize];
-            } else {
-                self.userInterface = [[InboxSampleNavigationUserInterface alloc] initWithMessageListController:mlc];
-            }
-            break;
-        default:
-            break;
-    }
-
-    self.userInterface.parentController = self;
-    _style = style;
+- (void)closeSettings {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)selectInboxStyle:(id)sender {
+- (void)presentController:(UIViewController *)root {
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:root];
 
-    NSString *popoverOrNav;
-
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        popoverOrNav = @"Popover";
-    }
-
-    else {
-        popoverOrNav = @"Navigation Controller";
-    }
-
-
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Select Inbox Style" delegate:self
-                                              cancelButtonTitle:@"Cancel"
-                                         destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Modal", popoverOrNav, nil];
-
-    [sheet showInView:self.view];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    switch (buttonIndex) {
-        case 0:
-            self.style = InboxStyleModal;
-            break;
-        case 1:
-            self.style = InboxStyleNavigation;
-            break;
-    }
-}
+#pragma Inbox
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.runiPhoneTargetOniPad = NO;
-    self.style = InboxStyleModal;
 
     self.version.text = [NSString stringWithFormat:@"Version: %@", [UAirshipVersion get]];
 
     self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc] initWithTitle:@"Inbox"
                                                                                style:UIBarButtonItemStylePlain
-                                                                              target:self action:@selector(mail:)];
+                                                                              target:self action:@selector(showInbox)];
+
+    [UAirship inbox].delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark UAInboxPushHandlerDelegate methods
-
-/*
- Called when a new rich push message is available for viewing.
- */
-- (void)richPushMessageAvailable:(UAInboxMessage *)message {
-
-    // Display an alert, and if the user taps "View", display the message
-    NSString *alertText = message.title;
-    [self.alertHandler showNewMessageAlert:alertText withViewBlock:^{
-        [self displayMessage:message];
-    }];
+- (void)inboxDone:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
- Called when a new rich push message is available after launching from a
- push notification.
- */
-- (void)launchRichPushMessageAvailable:(UAInboxMessage *)message {
-    [self displayMessage:message];
-}
+#pragma mark UAInboxDelegate methods
 
-- (void)richPushNotificationArrived:(NSDictionary *)notification {
-    // Add custom notification handling here
-}
-
-- (void)applicationLaunchedWithRichPushNotification:(NSDictionary *)notification {
-    // Add custom launch notification handling here
+- (void)showInbox {
+    [self presentController:[self buildMessageListController]];
 }
 
 @end

@@ -1,5 +1,6 @@
 {
   "name": "UrbanAirship-iOS-SDK",
+  "documentation_url": "http://docs.urbanairship.com/reference/libraries/ios/6.1.1/",
   "version": "6.1.1",
   "license": "BSD",
   "platforms": {

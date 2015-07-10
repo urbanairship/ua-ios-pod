@@ -1,7 +1,7 @@
 {
   "name": "UrbanAirship-iOS-SDK",
-  "documentation_url": "http://docs.urbanairship.com/reference/libraries/ios/6.1.1/",
-  "version": "6.1.1",
+  "documentation_url": "http://docs.urbanairship.com/reference/libraries/ios/6.1.2/",
+  "version": "6.1.2",
   "license": "BSD",
   "platforms": {
     "ios": "6.0"
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/urbanairship/ua-ios-pod.git",
-    "tag": "6.1.1"
+    "tag": "6.1.2"
   },
   "requires_arc": true,
   "default_subspecs": [

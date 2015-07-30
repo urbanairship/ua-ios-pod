@@ -1,7 +1,7 @@
 {
   "name": "UrbanAirship-iOS-SDK",
-  "documentation_url": "http://docs.urbanairship.com/reference/libraries/ios/6.1.2/",
-  "version": "6.1.2",
+  "documentation_url": "http://docs.urbanairship.com/reference/libraries/ios/6.1.3/",
+  "version": "6.1.3",
   "license": "BSD",
   "platforms": {
     "ios": "6.0"
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/urbanairship/ua-ios-pod.git",
-    "tag": "6.1.2"
+    "tag": "6.1.3"
   },
   "requires_arc": true,
   "default_subspecs": [
@@ -42,7 +42,8 @@
         "SystemConfiguration",
         "UIKit",
         "CoreTelephony",
-        "CoreLocation"
+        "CoreLocation",
+        "PassKit"
       ],
       "xcconfig": {
         "OTHER_LDFLAGS": "-ObjC"
@@ -55,6 +56,11 @@
         ]
       },
       "source_files": "Airship/UI/Default/{Common,Push}/Classes/Shared/*.{h,m}",
+      "frameworks": [
+        "MapKit",
+        "MessageUI",
+        "AudioToolbox"
+      ],
       "resources": [
         "Airship/UI/Default/{Common,Push}/Resources/**/**/**.{xib,jpg,js,png}",
         "Airship/UI/Default/{Common,Push}/Resources/*.lproj"

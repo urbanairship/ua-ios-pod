@@ -15,7 +15,6 @@
 		617781FE1919C304001F0FFC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 617781FD1919C304001F0FFC /* Images.xcassets */; };
 		61BF8BDB1B3A180E0077935E /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61BF8BD91B3A180E0077935E /* Main_iPad.storyboard */; };
 		61BF8BDC1B3A180E0077935E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61BF8BDA1B3A180E0077935E /* Main_iPhone.storyboard */; };
-		61BF8BDE1B3A2D960077935E /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61BF8BDD1B3A2D960077935E /* AirshipConfig.plist */; };
 		61D0DC5F1A0A8E2C001BF893 /* SampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0DC5E1A0A8E2C001BF893 /* SampleViewController.m */; };
 		7D03966B2BE1801BE189907E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAC1F49F54EF1252EB2623F1 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -35,7 +34,6 @@
 		617782041919C304001F0FFC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		61BF8BD91B3A180E0077935E /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
 		61BF8BDA1B3A180E0077935E /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
-		61BF8BDD1B3A2D960077935E /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
 		61D0DC5D1A0A8E2C001BF893 /* SampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleViewController.h; sourceTree = "<group>"; };
 		61D0DC5E1A0A8E2C001BF893 /* SampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleViewController.m; sourceTree = "<group>"; };
 		CAA091506D6719CAD5648B95 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -90,7 +88,6 @@
 		617781E81919C304001F0FFC /* PodSample */ = {
 			isa = PBXGroup;
 			children = (
-				61BF8BDD1B3A2D960077935E /* AirshipConfig.plist */,
 				617781F11919C304001F0FFC /* AppDelegate.h */,
 				617781F21919C304001F0FFC /* AppDelegate.m */,
 				61BF8BD91B3A180E0077935E /* Main_iPad.storyboard */,
@@ -179,7 +176,6 @@
 				61BF8BDB1B3A180E0077935E /* Main_iPad.storyboard in Resources */,
 				61BF8BDC1B3A180E0077935E /* Main_iPhone.storyboard in Resources */,
 				617781FE1919C304001F0FFC /* Images.xcassets in Resources */,
-				61BF8BDE1B3A2D960077935E /* AirshipConfig.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

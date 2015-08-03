@@ -1,0 +1,30 @@
+#!/bin/bash -ex
+
+VERSION=$1
+
+echo "Updating pod version to $VERSION"
+
+# Move out of scripts directory into root directory
+cd ..
+
+# Download new zipped lib package from s3
+curl -O http://com.urbanairship.filereleases.s3.amazonaws.com/libUAirship-$VERSION.zip
+
+# Unzip lib package
+unzip libUAirship-$VERSION.zip -d $VERSION
+
+# Remove old Airship folder
+rm -rf Airship/
+
+# Add new Airship folder
+mv -f $VERSION/Airship/ Airship/
+
+# Remove AirshipKit from new Airship folder
+rm -rf Airship/AirshipKit.framework
+
+# Remove zip file and folder
+rm -f libUAirship-$VERSION.zip
+rm -rf ./$VERSION
+
+# Update podspec with the release version
+sed -Ei '' "s/([1-9]+[0-9]*)\.[0-9]\.[0-9]/$VERSION/g" UrbanAirship-iOS-SDK.podspec.json

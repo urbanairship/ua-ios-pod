@@ -1,0 +1,34 @@
+#!/bin/bash -ex
+
+VERSION=$1
+ROOT_PATH=`dirname "${0}"`/../
+
+if [ -z "$1" ]
+  then
+    echo "No version number supplied"
+    exit
+fi
+
+echo "Updating pod version to $VERSION"
+
+# Download new zipped lib package from bintray
+curl -OL https://bintray.com/artifact/download/urbanairship/iOS/urbanairship-sdk/$VERSION/libUAirship-$VERSION.zip
+
+# Unzip lib package
+unzip "libUAirship-$VERSION.zip" -d "$ROOT_PATH/scripts/$VERSION"
+
+# Remove old Airship folder
+rm -rf "${ROOT_PATH}/Airship/"
+
+# Add new Airship folder
+mv -f "$ROOT_PATH/scripts/$VERSION/Airship/" "${ROOT_PATH}/Airship/"
+
+# Remove AirshipKit from new Airship folder
+rm -rf "$ROOT_PATH/Airship/AirshipKit.framework"
+
+# Remove zip file and folder
+rm -f libUAirship-$VERSION.zip
+rm -rf "$ROOT_PATH/scripts/$VERSION/"
+
+# Update podspec with the release version
+sed -Ei '' "s/([1-9]+[0-9]*)\.[0-9]\.[0-9]/$VERSION/g" "${ROOT_PATH}/UrbanAirship-iOS-SDK.podspec.json"

@@ -1,2 +1,3 @@
 source 'https://github.com/CocoaPods/Specs.git'
-pod 'UrbanAirship-iOS-SDK/All'
+# fetch source and podspec from local ua-ios-pod-dev directory
+pod 'UrbanAirship-iOS-SDK/All', :path => ".."

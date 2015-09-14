@@ -178,7 +178,7 @@
     [self addLocationToData:newLocation];
 }
 
-- (NSUInteger)supportedInterfaceOrientations{
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskPortrait;
 }
 

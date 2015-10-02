@@ -22,9 +22,12 @@
   "subspecs": [
     {
       "name": "Core",
-      "source_files": "Airship/**/**/*.{m,h}",
+      "source_files": "Airship/{Common,External,Push,Inbox,CommonUI}/**/*.{m,h}",
       "vendored_libraries": [
         "Airship/**.a"
+      ],
+        "resources": [
+        "Airship/UI/Default/Common/Resources/*.lproj"
       ],
       "public_header_files": [
         "**/**/**/*.h"
@@ -55,15 +58,15 @@
         "UrbanAirship-iOS-SDK/Core": [
         ]
       },
-      "source_files": "Airship/UI/Default/{Common,Push}/Classes/Shared/*.{h,m}",
+      "source_files": "Airship/UI/Default/Push/Classes/Shared/*.{h,m}",
       "frameworks": [
         "MapKit",
         "MessageUI",
         "AudioToolbox"
       ],
       "resources": [
-        "Airship/UI/Default/{Common,Push}/Resources/**/**/**.{xib,jpg,js,png}",
-        "Airship/UI/Default/{Common,Push}/Resources/*.lproj"
+        "Airship/UI/Default/Push/Resources/**/**/**.{xib,jpg,js,png}",
+        "Airship/UI/Default/Push/Resources/*.lproj"
       ]
     },
     {
@@ -72,10 +75,10 @@
         "UrbanAirship-iOS-SDK/Core": [
         ]
       },
-      "source_files": "Airship/UI/Default/{Common,Inbox}/Classes/Shared/*.{h,m}",
+      "source_files": "Airship/UI/Default/Inbox/Classes/Shared/*.{h,m}",
       "resources": [
-        "Airship/UI/Default/{Common,Inbox}/Resources/**/**/**.{xib,jpg,js,png}",
-        "Airship/UI/Default/{Common,Inbox}/Resources/*.lproj"
+        "Airship/UI/Default/Inbox/Resources/**/**/**.{xib,jpg,js,png}",
+        "Airship/UI/Default/Inbox/Resources/*.lproj"
       ]
     },
     {

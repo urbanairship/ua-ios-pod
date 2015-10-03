@@ -23,6 +23,15 @@ rm -rf "${ROOT_PATH}/Airship/"
 # Add new Airship folder
 mv -f "$ROOT_PATH/scripts/$VERSION/Airship/" "${ROOT_PATH}/Airship/"
 
+# Make CommonUI folder
+mkdir "${ROOT_PATH}/Airship/CommonUI"
+
+# Move Common UI source to CommonUI folder
+mv -f "$ROOT_PATH/Airship/UI/Default/Common" "${ROOT_PATH}/Airship/CommonUI"
+
+# Move UA-UI-Bridging-Header to CommonUI folder
+mv -f "$ROOT_PATH/Airship/UI/UA-UI-Bridging-Header.h" "${ROOT_PATH}/Airship/CommonUI/Common/"
+
 # Remove AirshipKit from new Airship folder
 rm -rf "$ROOT_PATH/Airship/AirshipKit.framework"
 

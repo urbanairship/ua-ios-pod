@@ -22,12 +22,12 @@
   "subspecs": [
     {
       "name": "Core",
-      "source_files": "Airship/**/**/*.{m,h}",
+      "source_files": [
+        "Airship/AirshipLib.h",
+        "Airship/{Common,External,Inbox,Push}/**/*.h"
+      ],
       "vendored_libraries": [
         "Airship/**.a"
-      ],
-      "public_header_files": [
-        "**/**/**/*.h"
       ],
       "libraries": [
         "z",
@@ -50,9 +50,22 @@
       }
     },
     {
+      "name": "CommonUI",
+      "dependencies": {
+        "UrbanAirship-iOS-SDK/Core": [
+        ]
+      },
+      "source_files": "Airship/UI/Default/Common/**/*.{h,m}",
+      "resources": [
+        "Airship/UI/Default/Common/Resources/*.lproj"
+      ]
+    },
+    {
       "name": "PushUI",
       "dependencies": {
         "UrbanAirship-iOS-SDK/Core": [
+        ],
+        "UrbanAirship-iOS-SDK/CommonUI": [
         ]
       },
       "source_files": "Airship/UI/Default/Push/Classes/Shared/*.{h,m}",
@@ -67,9 +80,11 @@
       ]
     },
     {
-      "name": "RichPushUI",
+      "name": "InboxUI",
       "dependencies": {
         "UrbanAirship-iOS-SDK/Core": [
+        ],
+         "UrbanAirship-iOS-SDK/CommonUI": [
         ]
       },
       "source_files": "Airship/UI/Default/Inbox/Classes/Shared/*.{h,m}",
@@ -83,9 +98,11 @@
       "dependencies": {
         "UrbanAirship-iOS-SDK/Core": [
         ],
+        "UrbanAirship-iOS-SDK/CommonUI": [
+        ],
         "UrbanAirship-iOS-SDK/PushUI": [
         ],
-        "UrbanAirship-iOS-SDK/RichPushUI": [
+        "UrbanAirship-iOS-SDK/InboxUI": [
         ]
       }
     }

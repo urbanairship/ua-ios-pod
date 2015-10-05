@@ -1,5 +1,5 @@
 ua-ios-pod
-=======
+==========
 
 ua-ios-pod does the following things:
 
@@ -17,10 +17,11 @@ Editing the Podfile:
 
 The podfile can be edited to include any of the following subspec options:
 
-- Core: Installs the UA static library, headers and required resources  
-- PushUI: Installs Core and Push UI components
-- RichPushUI: Installs Core and Rich Push UI components
-- All: Installs Core, Push UI components and Rich Push UI components
+- Core: Installs the UA static library, headers and required resources
+- CommonUI: Installs Common UI components
+- PushUI: Installs Core, Common UI and Push UI components
+- InboxUI: Installs Core, Common UI and Inbox UI components
+- All: Installs Core, Push UI components and Inbox UI components
 
 Sample podfile contents:
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -28,7 +29,8 @@ Sample podfile contents:
 .. code-block:: json
 
    source 'https://github.com/CocoaPods/Specs.git'
-   pod 'UrbanAirship-iOS-SDK/All'
+   # fetch source and podspec from local ua-ios-pod-dev directory
+   pod 'UrbanAirship-iOS-SDK/All', :path => ".."
 
 
 

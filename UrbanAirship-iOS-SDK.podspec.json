@@ -1,7 +1,7 @@
 {
   "name": "UrbanAirship-iOS-SDK",
-  "documentation_url": "http://docs.urbanairship.com/reference/libraries/ios/6.3.0/",
-  "version": "6.3.0-bitcode",
+  "documentation_url": "http://docs.urbanairship.com/reference/libraries/ios/6.4.0/",
+  "version": "6.4.0",
   "license": "BSD",
   "platforms": {
     "ios": "6.0"
@@ -13,9 +13,10 @@
   },
   "source": {
     "git": "https://github.com/urbanairship/ua-ios-pod.git",
-    "tag": "6.3.0-bitcode"
+    "tag": "6.4.0"
   },
   "requires_arc": true,
+  "module_name": "AirshipKit",
   "default_subspecs": [
     "Core"
   ],

@@ -12,6 +12,8 @@ How to use PodSample:
 - Navigate to PodSample's podfile and run 'pod install'
 - Open the PodSample.workspace that is created during install once the installation is complete
 
+Note: The PodSample requires 'UrbanAirship-iOS-SDK/All' subspec.
+
 Editing the Podfile:
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -32,5 +34,7 @@ Sample podfile contents:
    # fetch source and podspec from local ua-ios-pod-dev directory
    pod 'UrbanAirship-iOS-SDK/All', :path => ".."
 
+Bitcode Support:
+^^^^^^^^^^^^^^^^
 
-
+As of version 6.4.0, ua-ios-pod supports bitcode by default.

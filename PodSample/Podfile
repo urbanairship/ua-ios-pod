@@ -1,3 +1,7 @@
-source 'https://github.com/CocoaPods/Specs.git'
+#source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
 # fetch source and podspec from local ua-ios-pod-dev directory
-pod 'UrbanAirship-iOS-SDK/All', :path => ".."
+target "PodSample" do
+  pod 'UrbanAirship-iOS-SDK', :path => ".."
+end

@@ -1,7 +1,7 @@
 {
   "name": "UrbanAirship-iOS-SDK",
-  "documentation_url": "http://docs.urbanairship.com/reference/libraries/ios/7.0.1/",
-  "version": "7.0.2",
+  "documentation_url": "http://docs.urbanairship.com/reference/libraries/ios/7.0.3/",
+  "version": "7.0.3.rc1",
   "license": "BSD",
     "platforms": {
     "ios": "8.0"
@@ -13,14 +13,14 @@
   },
   "source": {
     "git": "https://github.com/urbanairship/ua-ios-pod.git",
-    "tag": "7.0.2"
+    "tag": "7.0.3.rc1"
   },
   "module_name": "AirshipKit",
   "requires_arc": true,
-
   "source_files": [
     "Airship/AirshipLib.h",
-    "Airship/{Common,External,Inbox,Push}/**/*.h"
+    "Airship/{Common,External,Inbox,Push}/**/*.h",
+    "UADummySource.m"
   ],
   "vendored_libraries": [
     "Airship/**.a"
@@ -45,7 +45,7 @@
     "PassKit",
     "CoreData"
   ],
-  "xcconfig": {
-    "OTHER_LDFLAGS": ["-ObjC", "-lz", "-lsqlite3"]
+  "pod_target_xcconfig" : {
+     "OTHER_LDFLAGS": "-ObjC -lz -lsqlite3"
   }
 }

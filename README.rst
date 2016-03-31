@@ -17,14 +17,12 @@ Sample podfile contents:
 
 .. code-block:: json
 
-    source 'https://github.com/CocoaPods/Specs.git'
     use_frameworks!
 
-    # fetch source and podspec from local ua-ios-pod-dev directory
+    #fetch source and podspec from local ua-ios-pod-dev directory
     target "PodSample" do
-    pod 'UrbanAirship-iOS-SDK', :path => ".."
+    pod 'UrbanAirship-iOS-SDK', '~> 7.0.3.rc1'
     end
-
 
 Bitcode Support:
 ^^^^^^^^^^^^^^^^

@@ -21,7 +21,7 @@ Sample podfile contents:
 
     #fetch source and podspec from local ua-ios-pod-dev directory
     target "PodSample" do
-    pod 'UrbanAirship-iOS-SDK', '~> 7.0.3.rc1'
+    pod 'UrbanAirship-iOS-SDK', '~> 7.0.4'
     end
 
 Bitcode Support:

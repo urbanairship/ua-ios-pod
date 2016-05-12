@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>inProduction</key>
-	<true/>
 	<key>developmentAppKey</key>
 	<string>uoO1I2G7QsqvRKGqIcM-_A</string>
 	<key>developmentAppSecret</key>

@@ -1,7 +1,7 @@
 {
   "name": "UrbanAirship-iOS-SDK",
-  "documentation_url": "http://docs.urbanairship.com/reference/libraries/ios/7.2.1/",
-  "version": "7.2.1",
+  "documentation_url": "http://docs.urbanairship.com/reference/libraries/ios/7.2.2/",
+  "version": "7.2.2",
   "license": "BSD",
     "platforms": {
     "ios": "8.0"
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/urbanairship/ua-ios-pod.git",
-    "tag": "7.2.1"
+    "tag": "7.2.2"
   },
   "module_name": "AirshipKit",
   "requires_arc": true,

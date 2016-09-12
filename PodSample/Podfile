@@ -5,3 +5,6 @@ use_frameworks!
 target "PodSample" do
   pod 'UrbanAirship-iOS-SDK', :path => ".."
 end
+target "SampleServiceExtension" do
+  pod 'UrbanAirship-iOS-AppExtensions', :path => ".." 
+end

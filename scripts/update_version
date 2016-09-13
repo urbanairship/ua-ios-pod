@@ -19,9 +19,13 @@ unzip "libUAirship-$VERSION.zip" -d "$ROOT_PATH/scripts/$VERSION"
 
 # Remove old Airship folder
 rm -rf "${ROOT_PATH}/Airship/"
+# Remove old Airship App Extension folder
+rm -rf "${ROOT_PATH}/AirshipAppExtensions/"
 
 # Add new Airship folder
 mv -f "$ROOT_PATH/scripts/$VERSION/Airship/" "${ROOT_PATH}/Airship/"
+# Add new Airship App Extension folder
+mv -f "$ROOT_PATH/scripts/$VERSION/AirshipAppExtensions/AirshipAppExtensions/" "${ROOT_PATH}/AirshipAppExtensions/"
 
 # Remove AirshipKit from new Airship folder if it exists
 rm -rf "$ROOT_PATH/Airship/AirshipKit.framework"

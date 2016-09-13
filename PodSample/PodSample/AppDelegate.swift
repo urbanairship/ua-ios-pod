@@ -32,11 +32,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        let config = UAConfig.defaultConfig()
+        let config = UAConfig.default()
 
         UAirship.takeOff(config)
+
+        UAirship.setLogLevel(UALogLevel.trace)
+
+        UAirship.push().userPushNotificationsEnabled = true;
 
         return true
     }

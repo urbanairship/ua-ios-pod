@@ -28,7 +28,7 @@ import AirshipKit
 
 class ViewController: UIViewController {
 
-    @IBAction func displayMessageCenter(sender: AnyObject) {
+    @IBAction func displayMessageCenter(_ sender: AnyObject) {
         UAirship.defaultMessageCenter().display(true)
     }
 

@@ -19,9 +19,14 @@ Sample podfile contents:
 
     use_frameworks!
 
-    #fetch source and podspec from local ua-ios-pod-dev directory
+    # Urban Airship SDK
     target "PodSample" do
-    pod 'UrbanAirship-iOS-SDK', '~> 7.2.2'
+      pod 'UrbanAirship-iOS-SDK', '~> 8.0.0'
+    end
+
+    # Urban Airship Extension
+    target "SampleServiceExtension" do
+      pod 'UrbanAirship-iOS-AppExtensions', '~> 8.0.0'
     end
 
 Bitcode Support:

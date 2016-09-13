@@ -1,7 +1,7 @@
 {
   "name": "UrbanAirship-iOS-SDK",
-  "documentation_url": "http://docs.urbanairship.com/reference/libraries/ios/7.2.2/",
-  "version": "7.2.2",
+  "documentation_url": "http://docs.urbanairship.com/reference/libraries/ios/8.0.0/",
+  "version": "8.0.0",
   "license": "BSD",
     "platforms": {
     "ios": "8.0"
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/urbanairship/ua-ios-pod.git",
-    "tag": "7.2.2"
+    "tag": "8.0.0"
   },
   "module_name": "AirshipKit",
   "requires_arc": true,
@@ -33,6 +33,7 @@
       "Airship/AirshipResources.bundle"
     ], 
   "frameworks": [
+    "UserNotifications",
     "CFNetwork",
     "CoreGraphics",
     "Foundation",
@@ -45,6 +46,6 @@
     "CoreData"
   ],
   "pod_target_xcconfig" : {
-     "OTHER_LDFLAGS": "-ObjC -lz -lsqlite3"
+    "OTHER_LDFLAGS": "-ObjC -lz -lsqlite3"
   }
 }

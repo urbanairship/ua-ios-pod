@@ -36,3 +36,5 @@ rm -rf "$ROOT_PATH/scripts/$VERSION/"
 
 # Update podspec with the release version
 sed -Ei '' "s/([1-9]+[0-9]*)\.[0-9]\.[0-9]/$VERSION/g" "${ROOT_PATH}/UrbanAirship-iOS-SDK.podspec.json"
+# Update extensions podspec with the release version
+sed -Ei '' "s/([1-9]+[0-9]*)\.[0-9]\.[0-9]/$VERSION/g" "${ROOT_PATH}/UrbanAirship-iOS-AppExtensions.json"

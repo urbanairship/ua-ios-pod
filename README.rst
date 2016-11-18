@@ -1,5 +1,8 @@
-ua-ios-pod
-==========
+**Deprecated** ua-ios-pod
+=========================
+
+The UrbanAirship-iOS-SDK and UrbanAirship-iOS-AppExtensions podspecs have been moved to the `ios-library repo <https://github.com/urbanairship/ios-library>`_
+
 
 ua-ios-pod does the following things:
 

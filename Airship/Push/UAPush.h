@@ -389,8 +389,9 @@ extern NSString *const UAChannelCreatedEventExistingKey;
 
 /**
  * Named user for this device.
+ * @deprecated Access through UAirship instead.
  */
-@property (readonly) UANamedUser *namedUser;
+@property (readonly) UANamedUser *namedUser __attribute__ ((deprecated("Access through UAirship instead.")));
 
 ///---------------------------------------------------------------------------------------
 /// @name Tags

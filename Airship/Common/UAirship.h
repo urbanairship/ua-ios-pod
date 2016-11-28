@@ -48,6 +48,8 @@
 @class UAActionRegistry;
 @class UAInAppMessaging;
 @class UADefaultMessageCenter;
+@class UALocation;
+@class UAAutomation;
 
 
 UA_VERSION_INTERFACE(UAirshipVersion)
@@ -111,11 +113,12 @@ extern NSString * const UAirshipTakeOffBackgroundThreadException;
 @property (nonatomic, strong, readonly) UAWhitelist *whitelist;
 
 
-///---------------------------------------------------------------------------------------
-/// @name Location Services
-///---------------------------------------------------------------------------------------
+/**
+ * Location services.
+ * @deprecated Use UALocation instead.
+ */
+@property (nonatomic, strong, readonly) UALocationService *locationService __attribute__ ((deprecated("Use UALocation instead")));
 
-@property (nonatomic, strong, readonly) UALocationService *locationService;
 
 ///---------------------------------------------------------------------------------------
 /// @name Logging
@@ -228,6 +231,18 @@ extern NSString * const UAirshipTakeOffBackgroundThreadException;
  * cannot be located at runtime.
  */
 + (nullable NSBundle *) resources;
+
+
+/**
+ * Returns the `UALocation` instance.
+ */
++ (null_unspecified UALocation *)location;
+
+
+/**
+ * Returns the `UAAutomation` instance.
+ */
++ (null_unspecified UAAutomation *)automation;
 
 NS_ASSUME_NONNULL_END
 

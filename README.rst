@@ -24,12 +24,12 @@ Sample podfile contents:
 
     # Urban Airship SDK
     target "PodSample" do
-      pod 'UrbanAirship-iOS-SDK', '~> 8.0.4'
+      pod 'UrbanAirship-iOS-SDK', '~> 8.0.5'
     end
 
     # Urban Airship Extension
     target "SampleServiceExtension" do
-      pod 'UrbanAirship-iOS-AppExtensions', '~> 8.0.4'
+      pod 'UrbanAirship-iOS-AppExtensions', '~> 8.0.5'
     end
 
 Bitcode Support:
